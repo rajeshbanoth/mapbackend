@@ -21,8 +21,8 @@ const server = app.listen(9000,()=>{
 
 const io = socket(server, {
     cors: {
-      origin: ['https://rajmaps.netlify.app',"http://localhost:3000","https://rajmaps.netlify.app/driver"],
-      credentials: true,
+      origin: "*",
+   
     },
     maxHttpBufferSize: 1e8 // 100 MB
   });
