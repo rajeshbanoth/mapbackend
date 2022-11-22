@@ -7,7 +7,9 @@ const socket = require('socket.io');
 const app = express()
 
 
-app.use(cors())
+app.use(cors({
+    origin:["https://rajmaps.netlify.app","http://localhost:3000"]
+}))
 app.use(express.json())
 
 app.get('/',(req,res)=>{
@@ -21,7 +23,7 @@ const server = app.listen(9000,()=>{
 
 const io = socket(server, {
     cors: {
-      origin: "*",
+      origin: ["https://rajmaps.netlify.app","http://localhost:3000"],
       credentials: true,
     },
     maxHttpBufferSize: 1e8 // 100 MB
