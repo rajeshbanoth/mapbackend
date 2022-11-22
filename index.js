@@ -22,7 +22,7 @@ const server = app.listen(9000,()=>{
 const io = socket(server, {
     cors: {
       origin: "*",
-   
+      credentials: true,
     },
     maxHttpBufferSize: 1e8 // 100 MB
   });
