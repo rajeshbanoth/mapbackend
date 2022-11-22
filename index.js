@@ -15,13 +15,13 @@ app.get('/',(req,res)=>{
 })
 
 
-const server = app.listen(process.env.PORT||9000,()=>{
-    console.log("server running on "+process.env.PORT)
+const server = app.listen(9000,()=>{
+    console.log("server running on 9000")
 })
 
 const io = socket(server, {
     cors: {
-      origin: 'http://localhost:3000',
+      origin: 'https://rajmaps.netlify.app/',
       credentials: true,
     },
     maxHttpBufferSize: 1e8 // 100 MB
@@ -36,11 +36,17 @@ const io = socket(server, {
     // socket.on("add-user", (userId) => {
     //   onlineUsers.set(userId, socket.id);
     // });
+
+    console.log("user conneted")
   
     socket.on("send_driver_location", (data) => {
         socket.broadcast.emit("recieve_driver_location", data);             
     });
 
+
+    socket.on("send_driver_route", (data) => {
+        socket.broadcast.emit("recieve_driver_route", data);             
+    });
 
 
 
